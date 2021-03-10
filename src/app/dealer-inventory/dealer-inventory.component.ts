@@ -70,4 +70,8 @@ export class DealerInventoryComponent implements OnInit {
     }
   }
 
+  addVehicle(v:Vehicle){
+    this.inventory.push(v)
+  }
+
 }
