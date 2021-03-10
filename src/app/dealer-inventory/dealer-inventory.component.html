@@ -13,5 +13,15 @@
     <p *ngIf="car.featured">Featured car of the month!</p>
     <p>VIN: {{car.VIN}}</p>
     <p>{{car.mileage}} Miles, ${{car.price}}</p>
-    <p><button (click)="deleteVehicle(car)">Delete</button></p>    
+    <app-vehicle-form
+      *ngIf="vehicleToEdit == car"
+      [vehicle]="car"
+      [on-cancel]=true
+      (on-submit)="commitEdit($event)"
+      (on-cancel)="cancelEdit()"
+      ></app-vehicle-form>
+    <p>
+      <button (click)="deleteVehicle(car)">Delete</button>
+      <button (click)="beginEditing(car)">Edit</button>
+    </p>    
 </div>

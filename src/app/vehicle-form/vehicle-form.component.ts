@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Vehicle } from '../vehicle';
 
@@ -10,6 +10,14 @@ import { Vehicle } from '../vehicle';
 export class VehicleFormComponent implements OnInit {
   @Output("on-submit")
   emitter = new EventEmitter
+  @Output("on-cancel")
+  emitt = new EventEmitter
+
+  @Input()
+  vehicle = new Vehicle("", 0, "", "",0, 0, false, [])
+
+  @Input("on-cancel")
+  cancel:boolean = false
 
   constructor() { }
 
@@ -30,6 +38,10 @@ export class VehicleFormComponent implements OnInit {
       []
     )
     this.emitter.emit(v)
+  }
+
+  handleCancel(){
+    this.emitt.emit()
   }
 
 }

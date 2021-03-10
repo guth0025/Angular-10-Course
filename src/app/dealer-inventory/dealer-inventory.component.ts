@@ -7,6 +7,7 @@ import {Vehicle} from '../vehicle'
   styleUrls: ['./dealer-inventory.component.css']
 })
 export class DealerInventoryComponent implements OnInit {
+  vehicleToEdit:Vehicle = undefined
   inventory:Vehicle[] = [
     {
       VIN: "Y123",
@@ -72,6 +73,21 @@ export class DealerInventoryComponent implements OnInit {
 
   addVehicle(v:Vehicle){
     this.inventory.push(v)
+  }
+
+  beginEditing(v:Vehicle){
+    this.vehicleToEdit = v
+  }
+
+  commitEdit(v:Vehicle){
+    //Copy the edited data
+    Object.assign(this.vehicleToEdit, v)
+
+    this.vehicleToEdit = undefined
+  }
+
+  cancelEdit(){
+    this.vehicleToEdit = undefined
   }
 
 }
