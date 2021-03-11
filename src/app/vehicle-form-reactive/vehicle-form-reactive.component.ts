@@ -23,14 +23,14 @@ export class VehicleFormReactiveComponent implements OnInit {
   @Input()
   vehicle = new Vehicle('', 0, '', '', 0, 0, false, [])
 
-  @Input("onCancel")
-  cancel:boolean = false
-
   @Output("on-submit")
   emitter = new EventEmitter
 
   @Output("on-cancel")
   emitt = new EventEmitter
+
+  @Input("onCancel")
+  cancel:boolean = false
 
   constructor() { }
 

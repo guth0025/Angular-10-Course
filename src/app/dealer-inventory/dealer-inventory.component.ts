@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from '../inventory.service';
 import {Vehicle} from '../vehicle'
 
 @Component({
@@ -52,9 +53,10 @@ export class DealerInventoryComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private inventorySvc:InventoryService) { }
 
   ngOnInit(): void {
+    this.inventory = this.inventorySvc.getInventory()
   }
 
   trackByVIN(index:number, car:Vehicle) : String {
@@ -62,7 +64,10 @@ export class DealerInventoryComponent implements OnInit {
   }
 
   deleteVehicle(car:Vehicle){
-    this.inventory = this.inventory.filter(c => c.VIN != car.VIN)
+    // this.inventory = this.inventory.filter(c => c.VIN != car.VIN)
+    //Changed to use the service instead of handling delete here.
+    this.inventorySvc.deleteVehicle(car)
+    this.inventory = this.inventorySvc.getInventory()
   }
 
   handlePhotoNavigation(photoIndex:number, car:Vehicle){
