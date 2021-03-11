@@ -1,1 +1,26 @@
-<p>vehicle-form-reactive works!</p>
+<form [formGroup]="vehicleForm">
+    VIN <br/>
+    <input type="text" formControlName="veh_vin"/>
+    <span class="error" *ngIf="vehicleForm.controls.veh_vin.invalid &&
+     vehicleForm.controls.veh_vin.dirty">Must be 3 characters, Must not contain I, O or Q.</span>
+     <br />
+     Year: <br/>
+    <input type="text" formControlName="veh_year"/><br />
+    Make <br/>
+    <input type="text" formControlName="veh_make"/><br />
+    Model <br/>
+    <input type="text" formControlName="veh_model"/><br />
+    Mileage <br/>
+    <input type="text" formControlName="veh_mileage"/><br />
+    Price <br/>
+    <input type="text" formControlName="veh_price"/><br />
+    <label>
+        <input type="checkbox" formControlName="veh.featured" />    
+        Featured vehicle
+    </label>
+    <br/>
+    <p *ngIf="vehicleForm.invalid" class="error">Please enter valid values.</p>
+    <button (click)="handleSubmit()"
+    [disabled]="vehicleForm.invalid">Submit</button>
+    <button *ngIf="cancel" (click)="handleCancel()">Cancel</button>
+</form>
