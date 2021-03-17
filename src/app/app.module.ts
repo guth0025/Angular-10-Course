@@ -8,6 +8,8 @@ import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VehicleFormReactiveComponent } from './vehicle-form-reactive/vehicle-form-reactive.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { VehicleFormReactiveComponent } from './vehicle-form-reactive/vehicle-fo
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
