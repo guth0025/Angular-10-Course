@@ -14,7 +14,7 @@ export class VehicleFormComponent implements OnInit {
   emitt = new EventEmitter
 
   @Input()
-  vehicle = new Vehicle("", 0, "", "",0, 0, false, [])
+  vehicle = new Vehicle(0,"", 0, "", "",0, 0, false, 0)
 
   @Input("on-cancel")
   cancel:boolean = false
@@ -27,6 +27,7 @@ export class VehicleFormComponent implements OnInit {
   handleSubmit(nForm:NgForm){
     const input = nForm.value
     const v = new Vehicle(
+      0,
       input.veh_vin,
       input.veh_year,
       input.veh_make,
@@ -35,7 +36,7 @@ export class VehicleFormComponent implements OnInit {
       input.veh_price,
       // If input.veh_featured is equal to "" return false else return input.veh_featured 
       input.veh_featured === "" ? false: input.veh_featured,
-      []
+      0
     )
     this.emitter.emit(v)
   }

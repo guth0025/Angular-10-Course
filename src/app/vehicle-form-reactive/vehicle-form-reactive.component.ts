@@ -21,7 +21,7 @@ export class VehicleFormReactiveComponent implements OnInit {
   vehicleForm:FormGroup
 
   @Input()
-  vehicle = new Vehicle('', 0, '', '', 0, 0, false, [])
+  vehicle = new Vehicle(0,'', 0, '', '', 0, 0, false,0)
 
   @Output("on-submit")
   emitter = new EventEmitter
@@ -52,6 +52,7 @@ export class VehicleFormReactiveComponent implements OnInit {
     const input = this.vehicleForm.value
     
     const v = new Vehicle(
+      0,
       input.veh_vin,
       input.veh_year,
       input.veh_make,
@@ -59,7 +60,7 @@ export class VehicleFormReactiveComponent implements OnInit {
       input.veh_mileage,
       input.veh_price,
       input.veh_featured === "" ? false: input.veh_featured,
-      [])
+      0)
 
       this.emitter.emit(v)
   }

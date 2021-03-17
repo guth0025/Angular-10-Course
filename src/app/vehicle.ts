@@ -1,5 +1,6 @@
 export class Vehicle{
     constructor(
+        public Id : number,
         public VIN: String,
         public year: number,
         public make: string,
@@ -7,6 +8,6 @@ export class Vehicle{
         public mileage: number,
         public price: number,
         public featured: boolean,
-        public photos: String[],
+        public photos: number,
     ){}
 }
