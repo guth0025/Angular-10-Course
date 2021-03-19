@@ -12,7 +12,7 @@ export class DealerInventoryComponent implements OnInit {
   inventory:Vehicle[] = []
     // {
     //   "Id": 41,
-    //   "VIN": "Y123",
+    //  vin": "Y123",
     //   "year": 2012,
     //   "make": "HONDA",
     //   "model": "Civic",
@@ -23,7 +23,7 @@ export class DealerInventoryComponent implements OnInit {
     // },
     // {
     //   "Id": 4  2,
-    //   "VIN": "P1023",
+    //  vin": "P1023",
     //   "year": 2019,
     //   "make": "BMW",
     //   "model": "328i",
@@ -34,7 +34,7 @@ export class DealerInventoryComponent implements OnInit {
     // },
     // {
     //   "Id": 3,
-    //   "VIN": "NM182",
+    //  vin": "NM182",
     //   "year": 2018,
     //   "make": "KIA",
     //   "model": "Niro",
@@ -46,7 +46,7 @@ export class DealerInventoryComponent implements OnInit {
     // },
     // {
     //   "Id": 4  ,
-    //   "VIN": "Y187",
+    //  vin": "Y187",
     //   "year": 2014,
     //   "make": "HONDA",
     //   "model": "Accord",
@@ -63,12 +63,12 @@ export class DealerInventoryComponent implements OnInit {
     this.inventorySvc.getInventory().subscribe(list => this.inventory = list)
   }
 
-  trackByVIN(index:number, car:Vehicle) : String {
-    return car.VIN
+  trackvin(index:number, car:Vehicle) : String {
+    return car.vin
   }
 
   deleteVehicle(car:Vehicle){
-    // this.inventory = this.inventory.filter(c => c.VIN != car.VIN)
+    // this.inventory = this.inventory.filter(c => vin != cavin)
     //Changed to use the service instead of handling delete here.
     this.inventorySvc.deleteVehicle(car).subscribe(() => {
       //Update local copy of the list

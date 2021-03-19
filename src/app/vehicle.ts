@@ -1,7 +1,7 @@
 export class Vehicle{
     constructor(
         public Id : number,
-        public VIN: String,
+        public vin: String,
         public year: number,
         public make: string,
         public model: string,

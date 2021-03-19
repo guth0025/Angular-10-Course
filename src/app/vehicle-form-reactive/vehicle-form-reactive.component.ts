@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
 import {Vehicle} from '../vehicle'
-function validate_VIN(control:FormControl){
+function validate_vin(control:FormControl){
   const banned = ["I", "O", "Q"]
 
   if (banned.some(str => control.value.includes(str))) {
@@ -36,8 +36,7 @@ export class VehicleFormReactiveComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleForm = new FormGroup({
-      veh_vin: new FormControl(
-        this.vehicle.VIN, [Validators.minLength(3), Validators.required, validate_VIN]),
+      veh_vin: new FormControl(this.vehicle.vin, [Validators.minLength(3), Validators.required, validate_vin]),
       veh_year: new FormControl(this.vehicle.year, [Validators.required]),  
       veh_make: new FormControl(this.vehicle.make, [Validators.required]),  
       veh_model: new FormControl(this.vehicle.model, [Validators.required]),  
@@ -52,7 +51,7 @@ export class VehicleFormReactiveComponent implements OnInit {
     const input = this.vehicleForm.value
     
     const v = new Vehicle(
-      0,
+      null,
       input.veh_vin,
       input.veh_year,
       input.veh_make,

@@ -1,6 +1,6 @@
 <form ngForm #myForm="ngForm">
     VIN: <br/>
-    <input type="text" name="veh_vin" #vin="ngModel" [ngModel]="vehicle.VIN" ngModel required minlength="3"/>
+    <input type="text" name="veh_vin" #vin="ngModel" [ngModel]="vehicle.vin" ngModel required minlength="3"/>
     <span class="error" *ngIf="vin.invalid && vin.dirty">Must be 3 characters</span>
     <br/>
     Year: <br/>
