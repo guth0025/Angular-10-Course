@@ -21,6 +21,7 @@ export class InventoryService {
     return this.httpClient.put(`${this.baseURL}/${Id}`, newVehicle)
   }
   public deleteVehicle(vehicleToDelete:Vehicle): Observable<any>{
-    return this.httpClient.delete(`${this.baseURL}/${vehicleToDelete.Id}`)
+    console.log(`In inventory service: ${vehicleToDelete.id}`)
+    return this.httpClient.delete(`${this.baseURL}/${vehicleToDelete.id}`)
   }
 }

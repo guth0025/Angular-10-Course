@@ -61,18 +61,20 @@ export class DealerInventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventorySvc.getInventory().subscribe(list => this.inventory = list)
+    console.log(`On load: ${this.inventory}`)
   }
 
-  trackvin(index:number, car:Vehicle) : String {
-    return car.vin
+  trackvin(index:number, car:Vehicle) : number {
+    return car.id
   }
 
   deleteVehicle(car:Vehicle){
     // this.inventory = this.inventory.filter(c => vin != cavin)
     //Changed to use the service instead of handling delete here.
+    console.log(car)
     this.inventorySvc.deleteVehicle(car).subscribe(() => {
       //Update local copy of the list
-      this.inventory = this.inventory.filter(v => v.Id !== car.Id)
+      this.inventory = this.inventory.filter(v => v.id !== car.id)
     })
     
   }
@@ -98,7 +100,7 @@ export class DealerInventoryComponent implements OnInit {
   commitEdit(v:Vehicle){
     //Copy the edited data
     // Object.assign(this.vehicleToEdit, v)
-    this.inventorySvc.updateVehicle(this.vehicleToEdit.Id,v).subscribe(() => {
+    this.inventorySvc.updateVehicle(this.vehicleToEdit.id,v).subscribe(() => {
       Object.assign(this.vehicleToEdit, v)
       this.vehicleToEdit = undefined
     })
